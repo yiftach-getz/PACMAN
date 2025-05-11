@@ -18,7 +18,9 @@ const COLORS = {
 const PLAYER_LEVELS = {
     "רות אלירז": { grade: 4, difficulty: "easy" },
     "חירות מוריה": { grade: 5, difficulty: "medium" },
-    "יאיר אביחי": { grade: 7, difficulty: "hard" }
+    "יאיר אביחי": { grade: 7, difficulty: "hard" },
+    "רחל חנה": { grade: 10, difficulty: "hard" },
+    "אורי הודיה": { grade: 9, difficulty: "hard" }
 };
 
 // משתנים גלובליים
@@ -425,6 +427,17 @@ function gameLoop() {
     update();
     draw();
     requestAnimationFrame(gameLoop);
+}
+
+function arrowPress(dir) {
+    if (dir === 'left') player.direction = [-1, 0];
+    else if (dir === 'right') player.direction = [1, 0];
+    else if (dir === 'up') player.direction = [0, -1];
+    else if (dir === 'down') player.direction = [0, 1];
+}
+
+function arrowRelease() {
+    player.direction = [0, 0];
 }
 
 window.onload = function() {

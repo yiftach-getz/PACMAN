@@ -94,6 +94,38 @@
             color: gold;
             text-shadow: 0 0 10px gold;
         }
+        #mobileArrows {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 18px;
+            user-select: none;
+        }
+        .arrow-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: 2px 0;
+        }
+        .arrow-btn {
+            width: 56px;
+            height: 56px;
+            margin: 0 8px;
+            font-size: 2em;
+            border-radius: 50%;
+            border: 2px solid #333;
+            background: #222;
+            color: #fff;
+            box-shadow: 0 2px 8px #0008;
+            outline: none;
+            transition: background 0.2s;
+        }
+        .arrow-btn:active {
+            background: #444;
+        }
+        @media (min-width: 900px) {
+            #mobileArrows { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -101,6 +133,8 @@
         <button onclick="setPlayer('רות אלירז')">רות אלירז (כיתה ד')</button>
         <button onclick="setPlayer('חירות מוריה')">חירות מוריה (כיתה ה')</button>
         <button onclick="setPlayer('יאיר אביחי')">יאיר אביחי (כיתה ז')</button>
+        <button onclick="setPlayer('רחל חנה')">רחל חנה (כיתה י')</button>
+        <button onclick="setPlayer('אורי הודיה')">אורי הודיה (כיתה ט')</button>
     </div>
     <div id="gameContainer">
         <canvas id="gameCanvas" width="800" height="600"></canvas>
@@ -110,6 +144,16 @@
             <div id="questionText"></div>
             <input type="number" id="answer" placeholder="התשובה שלך">
             <button onclick="checkAnswer()">בדוק</button>
+        </div>
+    </div>
+    <div id="mobileArrows">
+        <div class="arrow-row">
+            <button class="arrow-btn" id="arrow-up" ontouchstart="arrowPress('up')" ontouchend="arrowRelease()" onclick="arrowPress('up')">▲</button>
+        </div>
+        <div class="arrow-row">
+            <button class="arrow-btn" id="arrow-left" ontouchstart="arrowPress('left')" ontouchend="arrowRelease()" onclick="arrowPress('left')">◀</button>
+            <button class="arrow-btn" id="arrow-down" ontouchstart="arrowPress('down')" ontouchend="arrowRelease()" onclick="arrowPress('down')">▼</button>
+            <button class="arrow-btn" id="arrow-right" ontouchstart="arrowPress('right')" ontouchend="arrowRelease()" onclick="arrowPress('right')">▶</button>
         </div>
     </div>
     <audio id="championSound" src="champion.mp3"></audio>
