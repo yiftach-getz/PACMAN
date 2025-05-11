@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>משחק פקמן מתמטי</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+            font-family: Arial, sans-serif;
+        }
+        #playerButtons {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            margin: 30px 0 10px 0;
+            z-index: 10;
+        }
+        #playerButtons button {
+            padding: 10px 18px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 4px;
+            background: #222;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        #playerButtons button:hover {
+            background: #444;
+        }
+        #gameContainer {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #gameCanvas {
+            width: 800px;
+            height: 600px;
+            border: 2px solid #333;
+            background: #000;
+            display: block;
+        }
+        #score, #lives {
+            position: absolute;
+            left: 20px;
+            color: white;
+            font-size: 20px;
+            text-shadow: 0 0 4px #000;
+        }
+        #score { top: 20px; }
+        #lives { top: 50px; color: red; }
+        #question {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            display: none;
+            min-width: 180px;
+        }
+        #answer {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 1em;
+            width: 100px;
+        }
+        .trophy {
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            color: gold;
+            font-size: 24px;
+        }
+        .champion {
+            color: gold;
+            text-shadow: 0 0 10px gold;
+        }
+    </style>
+</head>
+<body>
+    <div id="playerButtons">
+        <button onclick="setPlayer('רות אלירז')">רות אלירז (כיתה ד')</button>
+        <button onclick="setPlayer('חירות מוריה')">חירות מוריה (כיתה ה')</button>
+        <button onclick="setPlayer('יאיר אביחי')">יאיר אביחי (כיתה ז')</button>
+    </div>
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="score">ניקוד: 0</div>
+        <div id="lives">❤️❤️❤️</div>
+        <div id="question">
+            <div id="questionText"></div>
+            <input type="number" id="answer" placeholder="התשובה שלך">
+            <button onclick="checkAnswer()">בדוק</button>
+        </div>
+    </div>
+    <audio id="championSound" src="champion.mp3"></audio>
+    <audio id="lifeSound" src="life.mp3"></audio>
+    <script src="game.js"></script>
+</body>
+</html> 
